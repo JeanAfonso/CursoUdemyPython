@@ -1,4 +1,5 @@
 from datetime import datetime
+from random import randint
 
 class Pessoa:
     ano_atual = int(datetime.strftime(datetime.now(), '%Y'))
@@ -47,3 +48,18 @@ class Pessoa:
 
     def get_ano_nascimento(self):
         return self.ano_atual - self.idade
+
+    @classmethod
+    def por_ano_nascimento(cls, nome, ano_nascimento):
+        idade = cls.ano_atual - ano_nascimento
+        return cls(nome, idade)
+
+    # Age como uma função normal porem tem por estar dentro de uma classe,
+    # nao pode passar nem self, nem cls e deve ser instaciado pela classe ou pelo metodo
+    # ex: p1.gera_id() ou Pessoa.gera_id()
+
+    @staticmethod
+    def gera_id():
+        rand = randint(10000, 19999)
+        return rand
+
